@@ -3,11 +3,9 @@ import AddTodo from "./AddTodo";
 import { useState } from "react";
 
 function Todos() {
+  //creating state in function with the help of useState
+  //const[variable,functionToUpdate]=useState(initialValue)
   const [todosList, setTodosList] = useState([
-    {
-      title: "Go to market",
-      desc: "Description of first todo is here",
-    },
     {
       title: "Do home work",
       desc: "Description of second todo is here",
@@ -25,14 +23,19 @@ function Todos() {
         return todo !== todoDelete;
       })
     );
+    /* not work because we are giving same array reference to set
+    todosList.pop();
+    setTodosList(todosList);
+    */
   };
   const addTodo = (newTodo) => {
     console.log("ADD TODO CLICKED", newTodo);
-    // todosList.push(newTodo);
-    // console.log(todosList);
-    // setTodosList(todosList);
-
-    setTodosList([...todosList, newTodo]);
+    /* not work because we are giving same array reference to set
+    todosList.unshift(newTodo);
+    console.log(todosList);
+    setTodosList(todosList);
+    */
+    setTodosList([newTodo, ...todosList]); //new array reference
   };
 
   return (
